@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://btruhnyvnl6x3"]
-
-[ext_resource type="PackedScene" uid="uid://c5xv1qxau0ybm" path="res://Lib/Assets/Frigate_Ship.fbx" id="1_dqgke"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="Frigate_Ship" parent="." instance=ExtResource("1_dqgke")]

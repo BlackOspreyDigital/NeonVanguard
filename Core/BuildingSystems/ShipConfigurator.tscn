@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://2avmixldo1j3"]
 
 [ext_resource type="Shader" uid="uid://bfcpks815ug0" path="res://Lib/Shaders/ReseauGrid.gdshader" id="1_g5f7m"]
-[ext_resource type="PackedScene" uid="uid://855w0mjjln0n" path="res://spaceship.tscn" id="2_e34rb"]
+[ext_resource type="PackedScene" uid="uid://855w0mjjln0n" path="res://Core/GameSystems/Experimental/spaceship.tscn" id="2_e34rb"]
 [ext_resource type="Script" uid="uid://njtenx1nnpfo" path="res://Core/Codex/EditorCamera.gd" id="2_fuu81"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vmqwc"]

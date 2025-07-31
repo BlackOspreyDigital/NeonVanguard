@@ -1,6 +1,6 @@
 [gd_scene load_steps=207 format=4 uid="uid://855w0mjjln0n"]
 
-[ext_resource type="Script" uid="uid://deldushxip7y1" path="res://spaceship.gd" id="1_7g3nn"]
+[ext_resource type="Script" uid="uid://deldushxip7y1" path="res://Core/GameSystems/Experimental/ShipController.gd" id="1_7g3nn"]
 [ext_resource type="Shader" uid="uid://bv1be54pvlxe4" path="res://Lib/Shaders/genericglass.gdshader" id="2_7g3nn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_61xo0"]

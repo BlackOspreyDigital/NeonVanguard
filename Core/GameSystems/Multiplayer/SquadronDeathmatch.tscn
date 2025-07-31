@@ -1,3 +1,71 @@
-[gd_scene format=3 uid="uid://bo234a2yukuoq"]
+[gd_scene load_steps=11 format=3 uid="uid://bo234a2yukuoq"]
+
+[ext_resource type="Shader" uid="uid://dx1qtd1llnw56" path="res://Lib/Shaders/gasplanet.gdshader" id="1_pqo3o"]
+[ext_resource type="PackedScene" uid="uid://dx4aixkmta1yh" path="res://Lib/ships/StarBase_Variant_FEDERATION.fbx" id="2_aditk"]
+[ext_resource type="Shader" uid="uid://bnj2ve5jfor3k" path="res://Lib/Shaders/stars_shadow.gdshader" id="3_iivtu"]
+[ext_resource type="PackedScene" uid="uid://855w0mjjln0n" path="res://Core/GameSystems/Experimental/ShipController.tscn" id="4_aditk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5eul"]
+render_priority = 0
+shader = ExtResource("1_pqo3o")
+shader_parameter/time_scale = 0.05
+shader_parameter/base_color = Color(0, 0.677596, 0.687692, 1)
+shader_parameter/cloud_color = Color(1, 0.506216, 0.908669, 1)
+shader_parameter/cloud_density = 0.816
+shader_parameter/cloud_speed = 0.477
+shader_parameter/cloud_scale = 10.0
+shader_parameter/glow_intensity = 1.915
+shader_parameter/storm_intensity = 0.979
+
+[sub_resource type="SphereMesh" id="SphereMesh_81phd"]
+material = SubResource("ShaderMaterial_w5eul")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxlph"]
+shader = ExtResource("3_iivtu")
+shader_parameter/sky_color = Color(0.0776593, 0.168067, 0.143415, 1)
+shader_parameter/star_base_color = Color(1, 1, 1, 1)
+shader_parameter/star_hue_offset = 0.424
+shader_parameter/star_intensity = 0.092
+shader_parameter/star_twinkle_speed = 1.053
+shader_parameter/star_twinkle_intensity = 0.07
+shader_parameter/layer_scale = 51.145
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_d5lh8"]
+sky_material = SubResource("ShaderMaterial_rxlph")
+process_mode = 2
+radiance_size = 4
+
+[sub_resource type="Environment" id="Environment_81phd"]
+background_mode = 2
+background_intensity = 0.1
+sky = SubResource("Sky_d5lh8")
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_strength = 1.32
+glow_bloom = 0.79
+
+[sub_resource type="Compositor" id="Compositor_rxlph"]
 
 [node name="SquadronDeathmatch" type="Node3D"]
+
+[node name="Space" type="Node3D" parent="."]
+
+[node name="Planet_PH" type="MeshInstance3D" parent="Space"]
+transform = Transform3D(100000, 0, 0, 0, 100000, 0, 0, 0, 100000, -102267, -3593.31, -4878.81)
+mesh = SubResource("SphereMesh_81phd")
+
+[node name="StarBase_Variant_FEDERATION" parent="Space" instance=ExtResource("2_aditk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1527.85, 0, -386.083)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_81phd")
+compositor = SubResource("Compositor_rxlph")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.340665, -0.926197, 0.161572, -0.703884, -0.137321, 0.696914, -0.623293, -0.351143, -0.698716, 0, 0, 0)
+
+[node name="Spaceship" parent="." instance=ExtResource("4_aditk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1008.4, 0, 0)
