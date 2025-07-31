@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://yqojivaofxix"]
+
+[resource]
+emission_enabled = true
+emission = Color(0.825957, 3.36915e-07, 0.452042, 1)
+emission_energy_multiplier = 7.17

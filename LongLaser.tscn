@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce2b87q2w43fx"]
+
+[ext_resource type="Material" uid="uid://bvup075kj3r8p" path="res://Lib/Assets/Materials/longlaser_material.tres" id="1_66cot"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_at0ev"]
+material = ExtResource("1_66cot")
+radius = 0.01
+height = 1.003
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i3lvg"]
+radius = 0.0971146
+height = 1.09615
+
+[node name="LongLaser" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_at0ev")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_i3lvg")

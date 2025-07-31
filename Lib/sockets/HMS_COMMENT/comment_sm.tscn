@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://nometq6hyuyn"]
+
+[ext_resource type="PackedScene" uid="uid://cl0o7tw3fv5vg" path="res://Lib/sockets/HMS_COMMENT/module_comm_small.fbx" id="1_1y52y"]
+
+[node name="COMMENT_SM" type="Node3D"]
+
+[node name="module_comm_small" parent="." instance=ExtResource("1_1y52y")]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, -3.26835, 0)

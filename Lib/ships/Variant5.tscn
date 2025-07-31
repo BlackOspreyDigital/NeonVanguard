@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dymvm04imt3t5"]
+
+[ext_resource type="PackedScene" uid="uid://bqc0w8o2nvi55" path="res://Lib/ships/Variant5.fbx" id="2_smvcp"]
+[ext_resource type="Shader" uid="uid://cek6vd81xvn5y" path="res://Lib/Shaders/shield.gdshader" id="2_w8kkh"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w8kkh"]
+seed = 2155
+frequency = 0.0123
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_smvcp"]
+width = 1024
+height = 1024
+in_3d_space = true
+seamless = true
+noise = SubResource("FastNoiseLite_w8kkh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smvcp"]
+render_priority = 0
+shader = ExtResource("2_w8kkh")
+shader_parameter/speed = Vector2(0.2, 0.2)
+shader_parameter/barrier_color = Color(0, 0.810547, 0.7888, 1)
+shader_parameter/barrier_force = 1.0
+shader_parameter/barrier_noise_force = 26.315
+shader_parameter/barrier_fog_noise_force = 0.71
+shader_parameter/barrier_noise = SubResource("NoiseTexture2D_smvcp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_he65r"]
+lightmap_size_hint = Vector2i(129, 265)
+material = SubResource("ShaderMaterial_smvcp")
+size = Vector2(25.485, 52.655)
+
+[node name="Ship" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.9831e-08, 1.915, 0, -1.14, -8.37073e-08, 0, 0, 0, 1.55, 186.833, -3.33756, 0)
+mesh = SubResource("PlaneMesh_he65r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.9831e-08, -1.915, -2.34043e-07, -1.14, -8.37073e-08, -3.9387e-21, -7.52427e-15, 2.89157e-07, -1.55, 186.002, -3.33756, 0)
+mesh = SubResource("PlaneMesh_he65r")
+
+[node name="Variant5" parent="." instance=ExtResource("2_smvcp")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Variant5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8056, 3.84141, 0)
+light_color = Color(0.737255, 1, 1, 1)
+omni_range = 56.863
+omni_attenuation = -0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Variant5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.819, 3.84141, 0)
+light_color = Color(0.737255, 1, 1, 1)
+omni_range = 57.9802
+omni_attenuation = -0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Variant5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.602, 3.84141, 0)
+light_color = Color(0.737255, 1, 1, 1)
+omni_range = 57.9802
+omni_attenuation = -0.29

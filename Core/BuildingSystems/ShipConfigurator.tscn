@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://2avmixldo1j3"]
+
+[ext_resource type="Shader" uid="uid://bfcpks815ug0" path="res://Lib/Shaders/ReseauGrid.gdshader" id="1_g5f7m"]
+[ext_resource type="PackedScene" uid="uid://855w0mjjln0n" path="res://spaceship.tscn" id="2_e34rb"]
+[ext_resource type="Script" uid="uid://njtenx1nnpfo" path="res://Core/Codex/EditorCamera.gd" id="2_fuu81"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vmqwc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g5f7m"]
+sky_top_color = Color(0.134281, 0.16838, 0.215799, 1)
+sky_horizon_color = Color(0.182389, 0.187707, 0.196101, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0.703951, 0.68639, 1)
+
+[sub_resource type="Sky" id="Sky_fuu81"]
+sky_material = SubResource("ProceduralSkyMaterial_g5f7m")
+
+[sub_resource type="Environment" id="Environment_e34rb"]
+background_mode = 2
+sky = SubResource("Sky_fuu81")
+ssr_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 2.6
+glow_strength = 0.38
+glow_bloom = 0.45
+glow_blend_mode = 1
+glow_map = SubResource("NoiseTexture2D_vmqwc")
+fog_light_color = Color(0.324998, 0.35401, 0.399615, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0036
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_g5f7m"]
+
+[sub_resource type="Compositor" id="Compositor_g5f7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5f7m"]
+render_priority = 0
+shader = ExtResource("1_g5f7m")
+shader_parameter/grid_size = 0.208
+shader_parameter/cross_size = 0.03
+shader_parameter/cross_color = Color(0, 1, 1, 0.8)
+shader_parameter/background_color = Color(0.101961, 0.101961, 0.2, 0.12549)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fuu81"]
+material = SubResource("ShaderMaterial_g5f7m")
+size = Vector2(10000, 10000)
+
+[node name="Shipconfigurator" type="Node3D"]
+
+[node name="CameraRig" type="Node3D" parent="."]
+script = ExtResource("2_fuu81")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 4.98569, 5.5431)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e34rb")
+camera_attributes = SubResource("CameraAttributesPhysical_g5f7m")
+compositor = SubResource("Compositor_g5f7m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Ship_MountPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49, 0)
+
+[node name="Spaceship" parent="Ship_MountPoint" instance=ExtResource("2_e34rb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38, 0)
+
+[node name="Grid" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_fuu81")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dydrvi3cbpgvt"]
+
+[ext_resource type="Material" uid="uid://yqojivaofxix" path="res://Lib/Assets/Materials/scatterlaser_material.tres" id="1_e4w6b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0hxf7"]
+material = ExtResource("1_e4w6b")
+radius = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r76qx"]
+
+[node name="ScatterLaser" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_0hxf7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_r76qx")

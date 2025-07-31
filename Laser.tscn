@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsti64juw0ems"]
+
+[ext_resource type="Script" uid="uid://cmgocvs0ux4pw" path="res://laser.gd" id="1_c4r1g"]
+[ext_resource type="Material" uid="uid://f3irlrt45ifu" path="res://Lib/Assets/Materials/laser_material.tres" id="2_y3ayh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_52ay0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4r1g"]
+
+[node name="Laser" type="RigidBody3D"]
+collision_layer = 2
+mass = 0.1
+gravity_scale = 0.0
+script = ExtResource("1_c4r1g")
+damage = 25.0
+lifetime = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_52ay0")
+surface_material_override/0 = ExtResource("2_y3ayh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_c4r1g")
