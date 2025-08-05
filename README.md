@@ -1,2 +1,2 @@
 # NeonVanguard
-This is a test project nothing serious.
+Repo Build for NV.

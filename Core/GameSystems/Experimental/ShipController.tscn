@@ -3286,7 +3286,6 @@ script = ExtResource("1_7g3nn")
 rotation_strength = 5.0
 max_speed = 150.0
 mouse_sensitivity = 0.009
-laser_speed = 75.0
 crosshair = NodePath("HUD/Control/Crosshair")
 drag_line = NodePath("HUD/Control/DragLine")
 camera_rig = NodePath("CameraRig")
@@ -3322,7 +3321,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13328, 1.17012)
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(1, 0, 0, 0, 0.990899, -0.134609, 0, 0.134609, 0.990899, 0.0272086, 0.00659627, 0.000976801)
 fov = 74.0
-far = 100000.0
+far = 1e+06
 
 [node name="Variant20" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.73232, 2.37747)
@@ -3532,22 +3531,22 @@ transform = Transform3D(2.81174, 0.107443, -0.117208, 1.07107e-06, 1.20523, 0.10
 mesh = SubResource("ArrayMesh_ysiq0")
 skeleton = NodePath("")
 
-[node name="Cube_041" type="MeshInstance3D" parent="Variant20"]
+[node name="Right_MFD" type="MeshInstance3D" parent="Variant20"]
 transform = Transform3D(32.8, 2.96694, -4.4993, 1.23656e-05, 33.2814, 4.00558, 10.9416, -8.89415, 13.4877, 0.840902, 3.64628, -4.10733)
 mesh = SubResource("ArrayMesh_2vqkl")
 skeleton = NodePath("")
 
-[node name="Cube_042" type="MeshInstance3D" parent="Variant20"]
+[node name="Left_MFD" type="MeshInstance3D" parent="Variant20"]
 transform = Transform3D(-11.2305, -1.30466, -0.238303, -3.50146e-07, -0.81422, 4.42383, 3.45177, -4.24475, -0.775326, -0.904846, 3.64833, -4.17038)
 mesh = SubResource("ArrayMesh_imdyk")
 skeleton = NodePath("")
 
-[node name="Cube_043" type="MeshInstance3D" parent="Variant20"]
+[node name="Left_ControlArm" type="MeshInstance3D" parent="Variant20"]
 transform = Transform3D(22.3345, -10.849, -9.21708e-08, -3.69996e-07, -2.95997e-06, 6.18548, -10.849, -22.3345, -7.37367e-07, -0.783492, 3.26276, -2.07607)
 mesh = SubResource("ArrayMesh_tta5u")
 skeleton = NodePath("")
 
-[node name="Cube_044" type="MeshInstance3D" parent="Variant20"]
+[node name="Right_ControlArm" type="MeshInstance3D" parent="Variant20"]
 transform = Transform3D(23.3059, 8.56529, 9.21708e-08, 3.69996e-07, -2.95997e-06, 6.18548, 8.56529, -23.3059, -7.37367e-07, 0.862327, 3.26276, -2.07607)
 mesh = SubResource("ArrayMesh_1ygin")
 skeleton = NodePath("")
@@ -3677,7 +3676,7 @@ transform = Transform3D(1146.92, 0, 0, 0, 7.95079, 24.6565, 0, -131.543, 1.4903,
 mesh = SubResource("ArrayMesh_e87yj")
 skeleton = NodePath("")
 
-[node name="Cube_070" type="MeshInstance3D" parent="Variant20"]
+[node name="Canopy" type="MeshInstance3D" parent="Variant20"]
 transform = Transform3D(128.244, 0, 0, 0, -1.52879e-05, 128.244, 0, -128.244, -1.52879e-05, -0.00573734, 2.96941, -1.45467)
 mesh = SubResource("ArrayMesh_wk1n3")
 skeleton = NodePath("")

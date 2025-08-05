@@ -10,14 +10,8 @@ extends RigidBody3D
 @export var free_look_sensitivity: float = 0.005
 @export var free_look_lerp_speed: float = 5.0
 @export var zoom_speed: float = 0.5
-@export var laser_cooldown: float = 0.2
-@export var missile_cooldown: float = 1.0
-@export var laser_speed: float = 50.0
-@export var missile_speed: float = 30.0
 @export var health: float = 1000.0
 @export var team: String = "TeamA"
-@export var laser_scene: PackedScene = preload("res://Laser.tscn")
-@export var missile_scene: PackedScene = preload("res://Missile.tscn")
 
 # Node references
 @export var crosshair: Line2D
@@ -30,8 +24,6 @@ var viewport_center: Vector2
 var is_free_look: bool = false
 var camera_target_rotation: Basis = Basis.IDENTITY
 var camera_target_z: float
-var laser_timer: float = 0.0
-var missile_timer: float = 0.0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -44,10 +36,7 @@ func _ready() -> void:
 		camera = get_node_or_null("CameraRig/Camera3D")
 		if not crosshair or not drag_line or not camera_rig or not camera:
 			push_error("Crosshair, DragLine, CameraRig, or Camera3D not found!")
-	if not laser_scene:
-		push_error("Laser scene not assigned in Spaceship!")
-	if not missile_scene:
-		push_error("Missile scene not assigned in Spaceship!")
+	
 	linear_damp = 0.5  # Add damping
 	angular_damp = 0.5
 	_setup_crosshair()
@@ -80,14 +69,7 @@ func _physics_process(delta: float) -> void:
 		camera.transform.origin.z = lerp(current_z, camera_target_z, free_look_lerp_speed * delta)
 		if abs(camera_target_z) > 100.0:
 			push_warning("Camera zoom distance is very large (%s)." % camera_target_z)
-	laser_timer -= delta
-	missile_timer -= delta
-	if Input.is_action_pressed("fire_laser") and laser_timer <= 0 and not is_free_look and laser_scene:
-		_fire_projectile("Laser")
-		laser_timer = laser_cooldown
-	if Input.is_action_just_pressed("fire_missile") and missile_timer <= 0 and not is_free_look and missile_scene:
-		_fire_projectile("Missile")
-		missile_timer = missile_cooldown
+
 	mouse_delta = Vector2.ZERO
 	if linear_velocity.length() > max_speed:
 		linear_velocity = linear_velocity.normalized() * max_speed
@@ -136,18 +118,3 @@ func _update_drag_line() -> void:
 	drag_line_pos = drag_line_pos.clamp(Vector2(-drag_line_distance, -drag_line_distance), Vector2(drag_line_distance, drag_line_distance))
 	drag_line.set_point_position(0, Vector2.ZERO)
 	drag_line.set_point_position(1, drag_line_pos)
-
-func _fire_projectile(type: String) -> void:
-	var scene = laser_scene if type == "Laser" else missile_scene
-	if not scene:
-		push_error("No scene for projectile type: ", type)
-		return
-	var projectile = scene.instantiate()
-	get_tree().root.add_child(projectile)
-	var spawn_position = global_position - global_transform.basis.z * 2.0
-	projectile.global_position = spawn_position
-	projectile.global_transform.basis = global_transform.basis
-	var speed = laser_speed if type == "Laser" else missile_speed
-	var direction = -global_transform.basis.z
-	projectile.apply_central_impulse(direction * speed)
-	print("Spawning projectile type: ", type, ", at: ", spawn_position)

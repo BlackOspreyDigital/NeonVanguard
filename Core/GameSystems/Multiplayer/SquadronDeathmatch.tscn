@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bo234a2yukuoq"]
 
 [ext_resource type="Shader" uid="uid://dx1qtd1llnw56" path="res://Lib/Shaders/gasplanet.gdshader" id="1_pqo3o"]
-[ext_resource type="PackedScene" uid="uid://dx4aixkmta1yh" path="res://Lib/ships/StarBase_Variant_FEDERATION.fbx" id="2_aditk"]
 [ext_resource type="Shader" uid="uid://bnj2ve5jfor3k" path="res://Lib/Shaders/stars_shadow.gdshader" id="3_iivtu"]
 [ext_resource type="PackedScene" uid="uid://855w0mjjln0n" path="res://Core/GameSystems/Experimental/ShipController.tscn" id="4_aditk"]
+[ext_resource type="PackedScene" uid="uid://sgvxqoxhvitf" path="res://Core/GameSystems/Experimental/starbasealpha.tscn" id="4_iivtu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5eul"]
 render_priority = 0
@@ -22,11 +22,11 @@ material = SubResource("ShaderMaterial_w5eul")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxlph"]
 shader = ExtResource("3_iivtu")
-shader_parameter/sky_color = Color(0.0776593, 0.168067, 0.143415, 1)
-shader_parameter/star_base_color = Color(1, 1, 1, 1)
-shader_parameter/star_hue_offset = 0.424
-shader_parameter/star_intensity = 0.092
-shader_parameter/star_twinkle_speed = 1.053
+shader_parameter/sky_color = Color(0.0590206, 0.0612112, 0.00403477, 1)
+shader_parameter/star_base_color = Color(0.544427, 0.595813, 0.909878, 1)
+shader_parameter/star_hue_offset = 0.256
+shader_parameter/star_intensity = 0.127
+shader_parameter/star_twinkle_speed = 0.803
 shader_parameter/star_twinkle_intensity = 0.07
 shader_parameter/layer_scale = 51.145
 shader_parameter/layer_scale_step = 10.0
@@ -43,6 +43,9 @@ background_intensity = 0.1
 sky = SubResource("Sky_d5lh8")
 ssao_enabled = true
 ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 5.61602
 glow_enabled = true
 glow_strength = 1.32
 glow_bloom = 0.79
@@ -54,18 +57,28 @@ glow_bloom = 0.79
 [node name="Space" type="Node3D" parent="."]
 
 [node name="Planet_PH" type="MeshInstance3D" parent="Space"]
-transform = Transform3D(100000, 0, 0, 0, 100000, 0, 0, 0, 100000, -102267, -3593.31, -4878.81)
+transform = Transform3D(150000, 0, 0, 0, 150000, 0, 0, 0, 150000, 188068, -3593.31, -4878.81)
 mesh = SubResource("SphereMesh_81phd")
-
-[node name="StarBase_Variant_FEDERATION" parent="Space" instance=ExtResource("2_aditk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1527.85, 0, -386.083)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_81phd")
 compositor = SubResource("Compositor_rxlph")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.340665, -0.926197, 0.161572, -0.703884, -0.137321, 0.696914, -0.623293, -0.351143, -0.698716, 0, 0, 0)
+transform = Transform3D(0.213981, 0.050814, -0.975515, 0.976833, -0.0141928, 0.21353, -0.002995, -0.998607, -0.0526738, 0, 360.709, 1036.48)
+shadow_enabled = true
+shadow_normal_bias = 5.097
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.49
+directional_shadow_max_distance = 1216.8
+directional_shadow_pancake_size = 130.8
 
 [node name="Spaceship" parent="." instance=ExtResource("4_aditk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1008.4, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1517.02, 6.74337, 0.0297661)
+mass = 5.0
+thrust_strength = 1000.0
+rotation_strength = 1.0
+max_speed = 300.0
+
+[node name="Node3D" parent="." instance=ExtResource("4_iivtu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1752.49, 0, 0)

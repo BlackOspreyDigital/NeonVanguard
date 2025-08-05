@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://d0gset3edng3i"]
+[gd_scene load_steps=2 format=3 uid="uid://d0gset3edng3i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4yp7"]
 
 [node name="FpsController" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00264, 0)
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.869014, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_u4yp7")
