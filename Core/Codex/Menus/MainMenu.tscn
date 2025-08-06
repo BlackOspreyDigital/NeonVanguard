@@ -65,3 +65,24 @@ offset_right = 1634.0
 offset_bottom = 1075.0
 scale = Vector2(0.200121, 0.200121)
 texture = ExtResource("1_kypep")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 127.0
+offset_top = 464.0
+offset_right = 466.0
+offset_bottom = 504.0
+color = Color(1, 0.173739, 0.13131, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 127.0
+offset_top = 587.0
+offset_right = 466.0
+offset_bottom = 627.0
+color = Color(1, 0.173739, 0.13131, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 127.0
+offset_top = 649.0
+offset_right = 466.0
+offset_bottom = 689.0
+color = Color(1, 0.173739, 0.13131, 1)

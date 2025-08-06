@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0gset3edng3i"]
 
-[ext_resource type="Script" uid="uid://djvpodyjxv24q" path="res://Core/GameSystems/Experimental/FPSController.gd" id="1_ivh4u"]
+[ext_resource type="Script" uid="uid://djvpodyjxv24q" path="res://Core/GameSystems/Experimental/FPSController.gd" id="1_bcccw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4yp7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u4yp7"]
 
 [node name="FpsController" type="CharacterBody3D"]
-script = ExtResource("1_ivh4u")
+script = ExtResource("1_bcccw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_u4yp7")

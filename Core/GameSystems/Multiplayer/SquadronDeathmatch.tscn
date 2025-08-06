@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo234a2yukuoq"]
+[gd_scene load_steps=7 format=3 uid="uid://bo234a2yukuoq"]
 
 [ext_resource type="Shader" uid="uid://dx1qtd1llnw56" path="res://Lib/Shaders/gasplanet.gdshader" id="1_pqo3o"]
-[ext_resource type="Shader" uid="uid://bnj2ve5jfor3k" path="res://Lib/Shaders/stars_shadow.gdshader" id="3_iivtu"]
+[ext_resource type="Environment" uid="uid://cp88xjikyehi6" path="res://Core/Codex/Environments/SquadronDeathmatch.tres" id="2_aditk"]
 [ext_resource type="PackedScene" uid="uid://sgvxqoxhvitf" path="res://Core/GameSystems/Experimental/starbasealpha.tscn" id="4_iivtu"]
-[ext_resource type="PackedScene" uid="uid://d0gset3edng3i" path="res://Core/GameSystems/Experimental/FPSController.tscn" id="5_iivtu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5eul"]
 render_priority = 0
@@ -20,36 +19,6 @@ shader_parameter/storm_intensity = 0.979
 [sub_resource type="SphereMesh" id="SphereMesh_81phd"]
 material = SubResource("ShaderMaterial_w5eul")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxlph"]
-shader = ExtResource("3_iivtu")
-shader_parameter/sky_color = Color(0.0590206, 0.0612112, 0.00403477, 1)
-shader_parameter/star_base_color = Color(0.544427, 0.595813, 0.909878, 1)
-shader_parameter/star_hue_offset = 0.256
-shader_parameter/star_intensity = 0.127
-shader_parameter/star_twinkle_speed = 0.803
-shader_parameter/star_twinkle_intensity = 0.07
-shader_parameter/layer_scale = 51.145
-shader_parameter/layer_scale_step = 10.0
-shader_parameter/layers_count = 3
-
-[sub_resource type="Sky" id="Sky_d5lh8"]
-sky_material = SubResource("ShaderMaterial_rxlph")
-process_mode = 2
-radiance_size = 4
-
-[sub_resource type="Environment" id="Environment_81phd"]
-background_mode = 2
-background_intensity = 0.1
-sky = SubResource("Sky_d5lh8")
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-sdfgi_use_occlusion = true
-sdfgi_min_cell_size = 5.61602
-glow_enabled = true
-glow_strength = 1.32
-glow_bloom = 0.79
-
 [sub_resource type="Compositor" id="Compositor_rxlph"]
 
 [node name="SquadronDeathmatch" type="Node3D"]
@@ -61,11 +30,11 @@ transform = Transform3D(150000, 0, 0, 0, 150000, 0, 0, 0, 150000, 188068, -3593.
 mesh = SubResource("SphereMesh_81phd")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_81phd")
+environment = ExtResource("2_aditk")
 compositor = SubResource("Compositor_rxlph")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.213981, 0.050814, -0.975515, 0.976833, -0.0141928, 0.21353, -0.002995, -0.998607, -0.0526738, 0, 360.709, 1036.48)
+transform = Transform3D(0.213981, 0.050814, -0.975515, 0.976833, -0.0141929, 0.213531, -0.002995, -0.998607, -0.0526738, 0, 1432.88, 2666.75)
 shadow_enabled = true
 shadow_normal_bias = 5.097
 directional_shadow_mode = 0
@@ -76,6 +45,5 @@ directional_shadow_pancake_size = 130.8
 [node name="Node3D" parent="." instance=ExtResource("4_iivtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1752.49, 0, 0)
 
-[node name="FpsController" parent="." instance=ExtResource("5_iivtu")]
-process_priority = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1743.19, 0.228305, -220.707)
+[node name="MultiplayerSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1748.53, -0.776835, -217.797)

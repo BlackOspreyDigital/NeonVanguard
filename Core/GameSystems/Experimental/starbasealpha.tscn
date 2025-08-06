@@ -1440,19 +1440,37 @@ mesh = SubResource("BoxMesh_78xuq")
 skeleton = NodePath("../..")
 
 [node name="Light30" type="MeshInstance3D" parent="LD"]
-transform = Transform3D(25.8336, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, 3.96944, 2.77366, -225.018)
+transform = Transform3D(12.0111, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, -0.0620835, 2.77366, -225.018)
 material_override = ExtResource("2_lcna0")
 mesh = SubResource("BoxMesh_78xuq")
 skeleton = NodePath("../..")
 
 [node name="Light31" type="MeshInstance3D" parent="LD"]
-transform = Transform3D(25.8336, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, 3.96944, 2.77366, -218.311)
+transform = Transform3D(12.0111, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, -0.0620835, 2.77366, -218.311)
 material_override = ExtResource("2_lcna0")
 mesh = SubResource("BoxMesh_78xuq")
 skeleton = NodePath("../..")
 
 [node name="Light32" type="MeshInstance3D" parent="LD"]
-transform = Transform3D(25.8336, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, 3.96944, 2.77366, -210.879)
+transform = Transform3D(12.0111, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, -0.0620835, 2.77366, -210.879)
+material_override = ExtResource("2_lcna0")
+mesh = SubResource("BoxMesh_78xuq")
+skeleton = NodePath("../..")
+
+[node name="Light33" type="MeshInstance3D" parent="LD"]
+transform = Transform3D(12.0111, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, 7.99959, 2.77366, -225.018)
+material_override = ExtResource("2_lcna0")
+mesh = SubResource("BoxMesh_78xuq")
+skeleton = NodePath("../..")
+
+[node name="Light34" type="MeshInstance3D" parent="LD"]
+transform = Transform3D(12.0111, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, 7.99959, 2.77366, -218.311)
+material_override = ExtResource("2_lcna0")
+mesh = SubResource("BoxMesh_78xuq")
+skeleton = NodePath("../..")
+
+[node name="Light35" type="MeshInstance3D" parent="LD"]
+transform = Transform3D(12.0111, 0, 0, 0, 1.00688, 6.86952e-15, 0, -1.7053e-13, 0.0297505, 7.99959, 2.77366, -210.879)
 material_override = ExtResource("2_lcna0")
 mesh = SubResource("BoxMesh_78xuq")
 skeleton = NodePath("../..")
@@ -1742,6 +1760,14 @@ skeleton = NodePath("")
 transform = Transform3D(515.555, 0, 0, 0, -0.000122918, -515.555, 0, 515.555, -0.000122918, 1740.02, 61.0488, -855.862)
 mesh = SubResource("ArrayMesh_n571x")
 skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="starbasealpha2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16111, 0.646802, -217.276)
+light_color = Color(0.837733, 1, 0.936255, 1)
+light_energy = 3.187
+light_indirect_energy = 4.776
+light_specular = 1.05
+omni_range = 11.8017
 
 [node name="MeshInstance3D" type="StaticBody3D" parent="."]
 
