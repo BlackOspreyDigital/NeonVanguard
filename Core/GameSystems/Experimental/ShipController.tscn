@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=4 uid="uid://855w0mjjln0n"]
+[gd_scene load_steps=209 format=4 uid="uid://855w0mjjln0n"]
 
 [ext_resource type="Script" uid="uid://deldushxip7y1" path="res://Core/GameSystems/Experimental/ShipController.gd" id="1_7g3nn"]
 [ext_resource type="Shader" uid="uid://bv1be54pvlxe4" path="res://Lib/Shaders/genericglass.gdshader" id="2_7g3nn"]
@@ -6,6 +6,13 @@
 [sub_resource type="BoxMesh" id="BoxMesh_61xo0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d5lh8"]
+
+[sub_resource type="Curve" id="Curve_jpsw1"]
+_data = [Vector2(0.0866667, 0.0500677), 0.0, 0.0, 0, 0, Vector2(0.983333, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_jpsw1"]
+colors = PackedColorArray(1, 0, 0, 1, 0.435726, 0, 0.0110883, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vcrg"]
 resource_name = "Material.001"
@@ -3313,7 +3320,10 @@ grow_vertical = 2
 
 [node name="DragLine" type="Line2D" parent="HUD/Control"]
 top_level = true
-default_color = Color(1.15514e-06, 0.834006, 0.590756, 1)
+width = 1000.0
+width_curve = SubResource("Curve_jpsw1")
+default_color = Color(0.8386, 0, 0.147585, 1)
+gradient = SubResource("Gradient_jpsw1")
 
 [node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13328, 1.17012)

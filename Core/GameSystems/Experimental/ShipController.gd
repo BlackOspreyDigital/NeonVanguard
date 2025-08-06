@@ -106,7 +106,7 @@ func _setup_crosshair() -> void:
 	crosshair.position = viewport_center
 
 func _setup_drag_line() -> void:
-	drag_line.width = 1.0
+	drag_line.width = 10.0
 	drag_line.default_color = Color(0.5, 0.5, 1, 0.5)
 	drag_line.clear_points()
 	drag_line.add_point(Vector2.ZERO)

@@ -1,14 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0gset3edng3i"]
+[gd_scene load_steps=4 format=3 uid="uid://d0gset3edng3i"]
+
+[ext_resource type="Script" uid="uid://djvpodyjxv24q" path="res://Core/GameSystems/Experimental/FPSController.gd" id="1_ivh4u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4yp7"]
 
-[node name="FpsController" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00264, 0)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u4yp7"]
 
-[node name="CameraRig" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.869014, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+[node name="FpsController" type="CharacterBody3D"]
+script = ExtResource("1_ivh4u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_u4yp7")
+debug_color = Color(0.983707, 0, 0.35051, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_u4yp7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.869014, 0)
+current = true
+
+[node name="InteractionRay" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.159829)
