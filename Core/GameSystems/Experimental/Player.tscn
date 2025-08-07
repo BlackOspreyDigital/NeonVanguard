@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u4yp7"]
 
-[node name="FpsController" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_bcccw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -22,3 +22,7 @@ current = true
 
 [node name="InteractionRay" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.159829)
+
+[node name="UsernameLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

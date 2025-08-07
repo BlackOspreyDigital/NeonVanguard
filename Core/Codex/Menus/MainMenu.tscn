@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjwdhfx3wvnte"]
+[gd_scene load_steps=3 format=3 uid="uid://cjwdhfx3wvnte"]
 
+[ext_resource type="Script" uid="uid://bh2wrvkfickiy" path="res://Core/Codex/Menus/mainmenu.gd" id="1_fsevr"]
 [ext_resource type="Texture2D" uid="uid://d2j4g6h72kb66" path="res://Lib/Assets/Textures/1673753631752.png" id="1_kypep"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_fsevr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -51,12 +53,27 @@ offset_right = 1921.0
 offset_bottom = 1079.0
 text = "Broken By Design 2025"
 
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 188.0
+offset_top = 818.0
+offset_right = 302.0
+offset_bottom = 843.0
+text = "Coming Soon"
+
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 offset_left = 1646.0
 offset_top = 1031.0
 offset_right = 1921.0
 offset_bottom = 1056.0
 text = "Game Build Version 1.0"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+offset_left = 689.0
+offset_top = 194.0
+offset_right = 837.0
+offset_bottom = 219.0
+scale = Vector2(3.84865, 3.84865)
+text = "NEON VANGUARD"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 1594.0
@@ -71,6 +88,13 @@ offset_left = 127.0
 offset_top = 464.0
 offset_right = 466.0
 offset_bottom = 504.0
+color = Color(1, 0.173739, 0.13131, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 127.0
+offset_top = 810.0
+offset_right = 167.0
+offset_bottom = 850.0
 color = Color(1, 0.173739, 0.13131, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]

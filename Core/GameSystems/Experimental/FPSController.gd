@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var camera = $Head/Camera3D
+@onready var camera = $Camera3D
 @onready var username_label = $UsernameLabel
 var username: String = "Player"
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo234a2yukuoq"]
+[gd_scene load_steps=8 format=3 uid="uid://bo234a2yukuoq"]
 
 [ext_resource type="Shader" uid="uid://dx1qtd1llnw56" path="res://Lib/Shaders/gasplanet.gdshader" id="1_pqo3o"]
 [ext_resource type="Environment" uid="uid://cp88xjikyehi6" path="res://Core/Codex/Environments/SquadronDeathmatch.tres" id="2_aditk"]
+[ext_resource type="PackedScene" uid="uid://d0gset3edng3i" path="res://Core/GameSystems/Experimental/Player.tscn" id="4_aditk"]
 [ext_resource type="PackedScene" uid="uid://sgvxqoxhvitf" path="res://Core/GameSystems/Experimental/starbasealpha.tscn" id="4_iivtu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5eul"]
@@ -45,5 +46,5 @@ directional_shadow_pancake_size = 130.8
 [node name="Node3D" parent="." instance=ExtResource("4_iivtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1752.49, 0, 0)
 
-[node name="MultiplayerSpawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1748.53, -0.776835, -217.797)
+[node name="Player" parent="." instance=ExtResource("4_aditk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1746.08, 0, -215.19)
