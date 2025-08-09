@@ -7,6 +7,5 @@ func _ready():
 		multiplayer.peer_connected.connect(_on_peer_connected)
 
 func _on_peer_connected(id: int):
-	# Server spawns the new player
-	var player_data = { "id": id, "username": MultiplayerManager.player_info[id] }
+	var player_data = { "id": id, "username": MultiplayerManager.player_info.get(id, "Unknown") }
 	multiplayer_spawner.spawn(player_data)

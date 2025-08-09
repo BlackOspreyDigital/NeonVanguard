@@ -4,7 +4,7 @@ const DEFAULT_PORT = 4242
 const MAX_PLAYERS = 8
 
 var peer = ENetMultiplayerPeer.new()
-var player_info = {} # Dictionary to store player usernames
+var player_info = {}
 
 func _ready():
 	multiplayer.peer_connected.connect(_on_peer_connected)
@@ -18,6 +18,10 @@ func host_game(username: String):
 	peer.create_server(DEFAULT_PORT, MAX_PLAYERS)
 	multiplayer.multiplayer_peer = peer
 	print("Hosting game as ", username)
+	if multiplayer.is_server():
+		var spawner = get_node_or_null("/root/SquadronDeathmatch/MultiplayerSpawner")
+		if spawner:
+			spawner.spawn({ "id": multiplayer.get_unique_id(), "username": username })
 
 func join_game(address: String, port: int, username: String):
 	player_info[multiplayer.get_unique_id()] = username
@@ -28,8 +32,10 @@ func join_game(address: String, port: int, username: String):
 func _on_peer_connected(id: int):
 	print("Player connected: ", id)
 	if multiplayer.is_server():
-		# Send existing player info to new peer
 		rpc("register_player", id, player_info[multiplayer.get_unique_id()])
+		var spawner = get_node_or_null("/root/SquadronDeathmatch/MultiplayerSpawner")
+		if spawner:
+			spawner.spawn({ "id": id, "username": player_info.get(id, "Unknown") })
 
 func _on_peer_disconnected(id: int):
 	print("Player disconnected: ", id)
@@ -51,3 +57,8 @@ func _on_server_disconnected():
 func register_player(id: int, username: String):
 	player_info[id] = username
 	print("Registered player: ", id, " as ", username)
+
+func remove_player(id: int):
+	var player_node = get_node_or_null("/root/SquadronDeathmatch/" + str(id))
+	if player_node:
+		player_node.queue_free()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://qt2i3d1n30aj"]
+
+[ext_resource type="Script" uid="uid://6qjphg7rvj1l" path="res://Core/GameSystems/Multiplayer/multiplayermanager.gd" id="1_ywdbb"]
+
+[node name="MultiplayerSpawner" type="Node3D"]
+script = ExtResource("1_ywdbb")
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="SpawnPoint2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="SpawnPoint3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="SpawnPoint4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)

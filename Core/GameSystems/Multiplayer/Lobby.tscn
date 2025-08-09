@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwilxmlkrlx1"]
 
-[ext_resource type="Texture2D" uid="uid://d2j4g6h72kb66" path="res://Lib/Assets/Textures/1673753631752.png" id="1_76t88"]
-[ext_resource type="Script" uid="uid://6qjphg7rvj1l" path="res://Core/GameSystems/Multiplayer/multiplayermanager.gd" id="1_duhjk"]
+[ext_resource type="Script" uid="uid://6qjphg7rvj1l" path="res://Core/GameSystems/Multiplayer/multiplayermanager.gd" id="1_k5nq0"]
+[ext_resource type="Texture2D" uid="uid://d2j4g6h72kb66" path="res://Lib/Assets/Textures/1673753631752.png" id="2_ogexh"]
 
 [node name="MultiplayerManager" type="Node2D"]
-script = ExtResource("1_duhjk")
+script = ExtResource("1_k5nq0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -28,7 +28,7 @@ offset_top = 1035.0
 offset_right = 1794.0
 offset_bottom = 1235.0
 scale = Vector2(0.200121, 0.200121)
-texture = ExtResource("1_76t88")
+texture = ExtResource("2_ogexh")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 34.0

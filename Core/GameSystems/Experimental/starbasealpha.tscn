@@ -158,7 +158,8 @@ shadow_mesh = SubResource("ArrayMesh_b2gv6")
 resource_name = "Material.011"
 vertex_color_use_as_albedo = true
 emission_enabled = true
-emission_energy_multiplier = 5.2
+emission = Color(1, 0.506816, 0.121836, 1)
+emission_energy_multiplier = 3.38
 normal_enabled = true
 normal_scale = 0.0
 
@@ -1761,16 +1762,16 @@ transform = Transform3D(515.555, 0, 0, 0, -0.000122918, -515.555, 0, 515.555, -0
 mesh = SubResource("ArrayMesh_n571x")
 skeleton = NodePath("")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="starbasealpha2"]
+[node name="MeshInstance3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
+transform = Transform3D(41.49, 0, 0, 0, 41.49, 0, 0, 0, 41.49, 196.609, -2.08969, -27.0474)
+shape = SubResource("BoxShape3D_lcna0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16111, 0.646802, -217.276)
 light_color = Color(0.837733, 1, 0.936255, 1)
 light_energy = 3.187
 light_indirect_energy = 4.776
 light_specular = 1.05
 omni_range = 11.8017
-
-[node name="MeshInstance3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
-transform = Transform3D(41.49, 0, 0, 0, 41.49, 0, 0, 0, 41.49, 196.609, -2.08969, -27.0474)
-shape = SubResource("BoxShape3D_lcna0")

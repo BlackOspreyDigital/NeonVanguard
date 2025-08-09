@@ -23,6 +23,7 @@ current = true
 [node name="InteractionRay" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.159829)
 
-[node name="UsernameLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="UsernameLabel" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.31998, 0)
+modulate = Color(0.313726, 1, 1, 1)
+uppercase = true
