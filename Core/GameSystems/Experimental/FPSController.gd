@@ -1,38 +1,64 @@
-extends CharacterBody3D
+extends Node
 
-@onready var camera = $Camera3D
-@onready var username_label = $UsernameLabel
-var username: String = "Player"
+const DEFAULT_PORT = 4242
+const MAX_PLAYERS = 8
 
-var speed = 5.0
-var gravity = 9.8
-var mouse_sensitivity = 0.002
+var peer = ENetMultiplayerPeer.new()
+var player_info = {}
 
 func _ready():
-	if multiplayer.get_unique_id() == get_multiplayer_authority():
-		camera.current = true
-	else:
-		camera.current = false
-	username_label.text = username
-	set_multiplayer_authority(multiplayer.get_unique_id())
+	multiplayer.peer_connected.connect(_on_peer_connected)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	multiplayer.connected_to_server.connect(_on_connected_to_server)
+	multiplayer.connection_failed.connect(_on_connection_failed)
+	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
-func _physics_process(delta):
-	if multiplayer.get_unique_id() == get_multiplayer_authority():
-		var input_dir = Vector2(
-			Input.get_axis("ui_left", "ui_right"),
-			Input.get_axis("ui_up", "ui_down")
-		)
-		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-		velocity.y -= gravity * delta
-		move_and_slide()
-		rpc("sync_transform", global_transform)
+func host_game(username: String):
+	player_info[multiplayer.get_unique_id()] = username
+	peer.create_server(DEFAULT_PORT, MAX_PLAYERS)
+	multiplayer.multiplayer_peer = peer
+	print("Hosting game as ", username)
+	if multiplayer.is_server():
+		var spawner = get_node_or_null("/root/SquadronDeathmatch/MultiplayerSpawner")
+		if spawner:
+			spawner.spawn({ "id": multiplayer.get_unique_id(), "username": username })
 
-@rpc("any_peer", "call_remote", "unreliable")
-func sync_transform(new_transform: Transform3D):
-	global_transform = new_transform
+func join_game(address: String, port: int, username: String):
+	player_info[multiplayer.get_unique_id()] = username
+	peer.create_client(address, port)
+	multiplayer.multiplayer_peer = peer
+	print("Joining game as ", username)
 
-func set_username(new_username: String):
-	username = new_username
-	username_label.text = username
+func _on_peer_connected(id: int):
+	print("Player connected: ", id)
+	if multiplayer.is_server():
+		rpc("register_player", id, player_info.get(multiplayer.get_unique_id(), "Unknown"))
+		var spawner = get_node_or_null("/root/SquadronDeathmatch/MultiplayerSpawner")
+		if spawner:
+			spawner.spawn({ "id": id, "username": player_info.get(id, "Unknown") })
+
+func _on_peer_disconnected(id: int):
+	print("Player disconnected: ", id)
+	player_info.erase(id)
+	remove_player(id)
+
+func _on_connected_to_server():
+	print("Connected to server as ", player_info[multiplayer.get_unique_id()])
+
+func _on_connection_failed():
+	print("Connection failed")
+	multiplayer.multiplayer_peer = null
+
+func _on_server_disconnected():
+	print("Disconnected from server")
+	multiplayer.multiplayer_peer = null
+
+@rpc("any_peer", "call_local", "reliable")
+func register_player(id: int, username: String):
+	player_info[id] = username
+	print("Registered player: ", id, " as ", username)
+
+func remove_player(id: int):
+	var player_node = get_node_or_null("/root/SquadronDeathmatch/" + str(id))
+	if player_node:
+		player_node.queue_free()

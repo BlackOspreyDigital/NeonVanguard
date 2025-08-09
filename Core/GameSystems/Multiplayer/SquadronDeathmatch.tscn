@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo234a2yukuoq"]
+[gd_scene load_steps=8 format=3 uid="uid://bo234a2yukuoq"]
 
 [ext_resource type="Shader" uid="uid://dx1qtd1llnw56" path="res://Lib/Shaders/gasplanet.gdshader" id="1_pqo3o"]
 [ext_resource type="Environment" uid="uid://cp88xjikyehi6" path="res://Core/Codex/Environments/SquadronDeathmatch.tres" id="2_aditk"]
-[ext_resource type="PackedScene" uid="uid://qt2i3d1n30aj" path="res://Core/GameSystems/Multiplayer/Playerspawner.tscn" id="4_aditk"]
 [ext_resource type="PackedScene" uid="uid://sgvxqoxhvitf" path="res://Core/GameSystems/Experimental/starbasealpha.tscn" id="4_iivtu"]
 [ext_resource type="PackedScene" uid="uid://7ba7jactcx6f" path="res://Core/GameSystems/Experimental/terminal.tscn" id="5_iivtu"]
 
@@ -47,14 +46,6 @@ directional_shadow_pancake_size = 130.8
 [node name="Node3D" parent="." instance=ExtResource("4_iivtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1752.49, 0, 0)
 
-[node name="SpawnLocation" type="Node3D" parent="."]
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="SpawnLocation"]
-spawn_path = NodePath("MultiplayerSpawner")
-
-[node name="MultiplayerSpawner" parent="SpawnLocation/MultiplayerSpawner" instance=ExtResource("4_aditk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1748.25, -1.2071, -217.507)
-
 [node name="Terminal" parent="." instance=ExtResource("5_iivtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1740.37, -1.3957, -216.571)
 
@@ -66,10 +57,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1740.37, -1.3957, -220.211)
 
 [node name="Terminal4" parent="." instance=ExtResource("5_iivtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1740.37, -1.3957, -212.769)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../MultiplayerSpawner2")
-spawn_limit = 1
-
-[node name="MultiplayerSpawner2" parent="." instance=ExtResource("4_aditk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1747.93, -1.07099, -217.979)
