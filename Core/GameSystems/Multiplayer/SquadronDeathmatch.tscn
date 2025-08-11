@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo234a2yukuoq"]
+[gd_scene load_steps=10 format=3 uid="uid://bo234a2yukuoq"]
 
+[ext_resource type="Script" uid="uid://bbqkrted2xjx6" path="res://Core/GameSystems/Multiplayer/SquadronDeathmatch.gd" id="1_j1rx0"]
 [ext_resource type="Shader" uid="uid://dx1qtd1llnw56" path="res://Lib/Shaders/gasplanet.gdshader" id="1_pqo3o"]
 [ext_resource type="Environment" uid="uid://cp88xjikyehi6" path="res://Core/Codex/Environments/SquadronDeathmatch.tres" id="2_aditk"]
 [ext_resource type="PackedScene" uid="uid://sgvxqoxhvitf" path="res://Core/GameSystems/Experimental/starbasealpha.tscn" id="4_iivtu"]
 [ext_resource type="PackedScene" uid="uid://7ba7jactcx6f" path="res://Core/GameSystems/Experimental/terminal.tscn" id="5_iivtu"]
-[ext_resource type="PackedScene" uid="uid://d0gset3edng3i" path="res://Core/GameSystems/Experimental/Player.tscn" id="5_j1rx0"]
+[ext_resource type="Script" uid="uid://0obw6758t8oh" path="res://Core/GameSystems/Multiplayer/playerspawner.gd" id="5_j1rx0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5eul"]
 render_priority = 0
@@ -24,6 +25,7 @@ material = SubResource("ShaderMaterial_w5eul")
 [sub_resource type="Compositor" id="Compositor_rxlph"]
 
 [node name="SquadronDeathmatch" type="Node3D"]
+script = ExtResource("1_j1rx0")
 
 [node name="Space" type="Node3D" parent="."]
 
@@ -47,31 +49,34 @@ directional_shadow_pancake_size = 130.8
 [node name="Node3D" parent="." instance=ExtResource("4_iivtu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1752.49, 0, 0)
 
-[node name="Terminal" parent="." instance=ExtResource("5_iivtu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1740.37, -1.3957, -216.571)
+[node name="Terminal5" parent="." instance=ExtResource("5_iivtu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1767.66, -1.34467, -197.658)
 
-[node name="Terminal2" parent="." instance=ExtResource("5_iivtu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1740.37, -1.3957, -223.924)
+[node name="Terminal6" parent="." instance=ExtResource("5_iivtu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1746.46, -1.34467, -197.658)
 
-[node name="Terminal3" parent="." instance=ExtResource("5_iivtu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1740.37, -1.3957, -220.211)
+[node name="Terminal7" parent="." instance=ExtResource("5_iivtu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1757.64, -1.34467, -197.658)
 
-[node name="Terminal4" parent="." instance=ExtResource("5_iivtu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1740.37, -1.3957, -212.769)
+[node name="Terminal8" parent="." instance=ExtResource("5_iivtu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1777.4, -1.34467, -197.658)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../Player")
+_spawnable_scenes = PackedStringArray("uid://d0gset3edng3i")
+spawn_path = NodePath("..")
+script = ExtResource("5_j1rx0")
 
-[node name="SpawnPoints" type="Node3D" parent="MultiplayerSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1748.76, 0, -217.401)
+[node name="SpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1795.68, -12.0351, -310.369)
 
-[node name="SpawnPoint1" type="Node3D" parent="MultiplayerSpawner/SpawnPoints"]
+[node name="SpawnPoints1" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.44443)
 
-[node name="SpawnPoint2" type="Node3D" parent="MultiplayerSpawner/SpawnPoints"]
+[node name="SpawnPoints2" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0957, 0, 5.44443)
 
-[node name="SpawnPoint3" type="Node3D" parent="MultiplayerSpawner/SpawnPoints"]
+[node name="SpawnPoints3" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.44443)
 
-[node name="SpawnPoint4" type="Node3D" parent="MultiplayerSpawner/SpawnPoints"]
-
-[node name="Player" parent="." instance=ExtResource("5_j1rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1746.2, 0.193043, -217.533)
+[node name="SpawnPoints4" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0957, 0, 0)

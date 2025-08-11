@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0gset3edng3i"]
+[gd_scene load_steps=5 format=3 uid="uid://d0gset3edng3i"]
 
 [ext_resource type="Script" uid="uid://djvpodyjxv24q" path="res://Core/GameSystems/Experimental/FPSController.gd" id="1_bcccw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4yp7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u4yp7"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bcccw"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_bcccw")
@@ -28,5 +30,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.3
 pixel_size = 0.0035
 billboard = 1
 modulate = Color(0.313726, 1, 1, 1)
-text = "Player"
 uppercase = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_bcccw")

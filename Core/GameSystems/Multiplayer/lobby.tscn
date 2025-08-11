@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://do1gmk0svgod0"]
+
+[ext_resource type="Script" uid="uid://di1rr06d8dx58" path="res://Core/GameSystems/Multiplayer/lobby.gd" id="1_e3ojc"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e3ojc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1928.0
+offset_bottom = 1081.0
+color = Color(0.0844817, 0.123276, 0.126974, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 450.0
+offset_right = 723.0
+offset_bottom = 479.0
+scale = Vector2(2.37236, 2.37236)
+text = "Username : "
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 537.0
+offset_right = 723.0
+offset_bottom = 566.0
+scale = Vector2(2.37236, 2.37236)
+text = "IP Connect"
+
+[node name="IPInput" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 545.0
+offset_right = 1053.0
+offset_bottom = 574.0
+scale = Vector2(2.37236, 2.37236)
+
+[node name="LineEdit" type="LineEdit" parent="IPInput"]
+layout_mode = 0
+offset_left = -4.2152
+offset_top = -8.00889
+offset_right = 171.785
+offset_bottom = 23.9911
+
+[node name="UsernameInput" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 452.0
+offset_right = 1053.0
+offset_bottom = 481.0
+scale = Vector2(2.37236, 2.37236)
+text = "Dingus2593"
+
+[node name="LineEdit" type="LineEdit" parent="UsernameInput"]
+layout_mode = 0
+offset_left = -4.2152
+offset_top = -8.00889
+offset_right = 171.785
+offset_bottom = 23.9911
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 644.0
+offset_right = 1165.0
+offset_bottom = 684.0
+
+[node name="HostButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "HOST SESSION"
+
+[node name="JoinButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "JOIN SESSION"

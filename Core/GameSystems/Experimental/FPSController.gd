@@ -6,7 +6,7 @@ extends CharacterBody3D
 #@onready var chat_box = $CanvasLayer/ChatBox
 #@onready var chat_display = $CanvasLayer/ChatDisplay
 var username: String = "Player"
-var speed = 5.0
+var speed = 9.0
 var gravity = 9.8
 var mouse_sensitivity = 0.002
 var is_in_ship = false
@@ -31,8 +31,8 @@ func _input(event):
 func _physics_process(delta):
 	if multiplayer.get_unique_id() == get_multiplayer_authority() and not is_in_ship:
 		var input_dir = Vector2(
-			Input.get_axis("ui_left", "ui_right"),
-			Input.get_axis("ui_up", "ui_down")
+			Input.get_axis("move_left", "move_right"),
+			Input.get_axis("move_forward", "move_backward")
 		)
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		velocity.x = direction.x * speed
@@ -64,20 +64,20 @@ func request_ship(terminal_path: NodePath):
 			ship.set_multiplayer_authority(multiplayer.get_unique_id())
 			rpc("enter_ship", ship.get_path())
 
-@rpc("any_peer", "call_local", "reliable")
-func enter_ship(ship_path: NodePath):
-	is_in_ship = true
-	visible = false
-	set_physics_process(false)
+#@rpc("any_peer", "call_local", "reliable")
+#func enter_ship(ship_path: NodePath):
+#	is_in_ship = true
+#	visible = false
+#	set_physics_process(false)
 
-@rpc("any_peer", "call_local", "reliable")
-func exit_ship():
-	is_in_ship = false
-	visible = true
-	set_physics_process(true)
-	var ship = get_node_or_null("/root/SquadronDeathmatch/Ship_" + str(multiplayer.get_unique_id()))
-	if ship:
-		ship.queue_free()
+#@rpc("any_peer", "call_local", "reliable")
+#func exit_ship():
+#	is_in_ship = false
+#	visible = true
+#	set_physics_process(true)
+#	var ship = get_node_or_null("/root/SquadronDeathmatch/Ship_" + str(multiplayer.get_unique_id()))
+#	if ship:
+#		ship.queue_free()
 
 #func _on_chat_submitted(message: String):
 #	if multiplayer.get_unique_id() == get_multiplayer_authority():

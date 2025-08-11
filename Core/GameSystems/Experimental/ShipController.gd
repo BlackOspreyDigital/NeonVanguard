@@ -1,6 +1,5 @@
 extends RigidBody3D
 
-# Movement properties
 @export var thrust_strength: float = 500.0
 @export var strafe_strength: float = 200.0
 @export var rotation_strength: float = 75.0
@@ -13,7 +12,6 @@ extends RigidBody3D
 @export var health: float = 1000.0
 @export var team: String = "TeamA"
 
-# Node references
 @export var crosshair: Line2D
 @export var drag_line: Line2D
 @export var camera_rig: Node3D
@@ -121,6 +119,8 @@ func _setup_crosshair() -> void:
 		crosshair.add_point(Vector2(0, -10))
 		crosshair.add_point(Vector2(0, 10))
 		crosshair.position = viewport_center
+		if multiplayer.get_unique_id() != get_multiplayer_authority():
+			crosshair.visible = false
 
 func _setup_drag_line() -> void:
 	if drag_line:
@@ -130,9 +130,11 @@ func _setup_drag_line() -> void:
 		drag_line.add_point(Vector2.ZERO)
 		drag_line.add_point(Vector2.ZERO)
 		drag_line.position = viewport_center
+		if multiplayer.get_unique_id() != get_multiplayer_authority():
+			drag_line.visible = false
 
 func _update_drag_line() -> void:
-	if drag_line:
+	if drag_line and multiplayer.get_unique_id() == get_multiplayer_authority():
 		var drag_line_pos: Vector2 = mouse_delta * 0.5
 		drag_line_pos = drag_line_pos.clamp(Vector2(-drag_line_distance, -drag_line_distance), Vector2(drag_line_distance, drag_line_distance))
 		drag_line.set_point_position(0, Vector2.ZERO)
