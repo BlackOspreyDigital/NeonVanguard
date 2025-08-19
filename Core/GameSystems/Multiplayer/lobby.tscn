@@ -33,7 +33,7 @@ offset_top = 537.0
 offset_right = 723.0
 offset_bottom = 566.0
 scale = Vector2(2.37236, 2.37236)
-text = "IP Connect"
+text = "Server        :"
 
 [node name="IPInput" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -57,7 +57,6 @@ offset_top = 452.0
 offset_right = 1053.0
 offset_bottom = 481.0
 scale = Vector2(2.37236, 2.37236)
-text = "Dingus2593"
 
 [node name="LineEdit" type="LineEdit" parent="UsernameInput"]
 layout_mode = 0
@@ -68,10 +67,10 @@ offset_bottom = 23.9911
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 928.0
-offset_top = 644.0
-offset_right = 1165.0
-offset_bottom = 684.0
+offset_left = 81.0
+offset_top = 506.0
+offset_right = 446.0
+offset_bottom = 546.0
 
 [node name="HostButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -80,3 +79,16 @@ text = "HOST SESSION"
 [node name="JoinButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "JOIN SESSION"
+
+[node name="ReturnButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "RETURN HOME"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1406.0
+offset_top = 513.0
+offset_right = 1490.0
+offset_bottom = 538.0
+scale = Vector2(1.32593, 1.32593)
+text = "STATUS :::"

@@ -3326,12 +3326,53 @@ default_color = Color(0.8386, 0, 0.147585, 1)
 gradient = SubResource("Gradient_jpsw1")
 
 [node name="CameraRig" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13328, 1.17012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13328, 1.28119)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(1, 0, 0, 0, 0.990899, -0.134609, 0, 0.134609, 0.990899, 0.0272086, 0.00659627, 0.000976801)
 fov = 74.0
 far = 1e+06
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraRig/Camera3D"]
+
+[node name="Control" type="Control" parent="CameraRig/Camera3D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CameraRig/Camera3D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.5
+offset_top = -28.0
+offset_right = 80.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "WORK IN PROGRESS"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CameraRig/Camera3D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.888281
+anchor_top = 1.0
+anchor_right = 0.95599
+anchor_bottom = 1.0
+offset_left = -80.5
+offset_top = -28.0
+offset_right = 80.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "NEON_VANGUARD version 1.2 Proto"
+metadata/_edit_use_anchors_ = true
 
 [node name="Variant20" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.73232, 2.37747)

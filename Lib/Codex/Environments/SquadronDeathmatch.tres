@@ -1,0 +1,33 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cp88xjikyehi6"]
+
+[ext_resource type="Shader" uid="uid://bnj2ve5jfor3k" path="res://Lib/Shaders/stars_shadow.gdshader" id="1_bhf1u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxlph"]
+shader = ExtResource("1_bhf1u")
+shader_parameter/sky_color = Color(3.00817e-08, 0.119876, 0.124696, 1)
+shader_parameter/star_base_color = Color(0.607766, 0.630126, 0.608431, 1)
+shader_parameter/star_hue_offset = 0.183
+shader_parameter/star_intensity = 0.091
+shader_parameter/star_twinkle_speed = 0.0
+shader_parameter/star_twinkle_intensity = 0.07
+shader_parameter/layer_scale = 30.732
+shader_parameter/layer_scale_step = 30.021
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_d5lh8"]
+sky_material = SubResource("ShaderMaterial_rxlph")
+process_mode = 2
+radiance_size = 4
+
+[resource]
+background_mode = 2
+background_intensity = 0.1
+sky = SubResource("Sky_d5lh8")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 5.61602
+glow_enabled = true
+glow_strength = 1.32
+glow_bloom = 0.79
