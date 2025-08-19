@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=4 uid="uid://855w0mjjln0n"]
+[gd_scene load_steps=210 format=4 uid="uid://855w0mjjln0n"]
 
 [ext_resource type="Script" uid="uid://deldushxip7y1" path="res://Core/GameSystems/Experimental/ShipController.gd" id="1_7g3nn"]
 [ext_resource type="Shader" uid="uid://bv1be54pvlxe4" path="res://Lib/Shaders/genericglass.gdshader" id="2_7g3nn"]
@@ -3284,6 +3284,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l3dyk")
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jpsw1"]
+
 [node name="Spaceship" type="RigidBody3D" node_paths=PackedStringArray("crosshair", "drag_line", "camera_rig", "camera")]
 mass = 10.0
 gravity_scale = 0.0
@@ -3801,3 +3803,15 @@ skeleton = NodePath("")
 transform = Transform3D(-137.496, 5.39733e-05, -3.74695e-12, 0, 8.26127e-06, 131.834, 5.35431e-05, 138.601, -1.57158e-05, 0.000683947, 2.5922, 14.4866)
 mesh = SubResource("ArrayMesh_kbssa")
 skeleton = NodePath("")
+
+[node name="UsernameLabel" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 8.63572, 0)
+pixel_size = 0.0035
+billboard = 1
+modulate = Color(0.313726, 1, 1, 1)
+font_size = 577
+uppercase = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../UsernameLabel")
+replication_config = SubResource("SceneReplicationConfig_jpsw1")

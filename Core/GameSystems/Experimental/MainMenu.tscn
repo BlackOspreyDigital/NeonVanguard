@@ -15,22 +15,14 @@ script = ExtResource("1_fsevr")
 [node name="ModeSelectPanel" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 40.0
-offset_top = 392.0
-offset_right = 163.0
-offset_bottom = 528.0
+offset_left = 1562.0
+offset_top = 854.0
+offset_right = 1737.0
+offset_bottom = 923.0
 scale = Vector2(1.4866, 1.4866)
 
 [node name="ModeContainer" type="VBoxContainer" parent="ModeSelectPanel"]
 layout_mode = 2
-
-[node name="SingleplayerButton" type="Button" parent="ModeSelectPanel/ModeContainer"]
-layout_mode = 2
-text = "Single Player"
-
-[node name="Multiverse" type="Button" parent="ModeSelectPanel/ModeContainer"]
-layout_mode = 2
-text = "Multiverse"
 
 [node name="SandboxButton" type="Button" parent="ModeSelectPanel/ModeContainer"]
 layout_mode = 2
@@ -90,6 +82,9 @@ offset_right = 234.0
 offset_bottom = 237.0
 scale = Vector2(1.36361, 1.36361)
 
+[node name="StatusLabel" type="Label" parent="MenuContainer"]
+layout_mode = 2
+
 [node name="UsernameInput" type="LineEdit" parent="MenuContainer"]
 layout_mode = 2
 placeholder_text = "Enter Username"
@@ -111,5 +106,10 @@ text = "Register"
 layout_mode = 2
 text = "Select Game Mode"
 
-[node name="StatusLabel" type="Label" parent="MenuContainer"]
+[node name="JoinButton" type="Button" parent="MenuContainer"]
 layout_mode = 2
+text = "Join Session"
+
+[node name="IPInput" type="LineEdit" parent="MenuContainer"]
+layout_mode = 2
+placeholder_text = "Insert Ip Here "

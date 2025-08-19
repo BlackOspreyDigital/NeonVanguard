@@ -5,10 +5,10 @@ extends Node3D
 
 func _ready():
 	if not player_spawner:
-		push_error("PlayerSpawner node not found in sandbox.tscn!")
+		push_error("PlayerSpawner node not found in sandbox.tscn! Please add a MultiplayerSpawner named 'PlayerSpawner'.")
 		return
 	if not spawn_points:
-		push_error("SpawnPoints node not found in sandbox.tscn!")
+		push_error("SpawnPoints node not found in sandbox.tscn! Please add a Node3D named 'SpawnPoints' with Marker3D children.")
 		return
 	var light = get_node_or_null("DirectionalLight3D")
 	if not light:

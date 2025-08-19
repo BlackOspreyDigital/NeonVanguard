@@ -8,6 +8,8 @@ extends Control
 @onready var mode_select_button = $MenuContainer/ModeSelectButton
 @onready var mode_select_panel = $ModeSelectPanel
 @onready var sandbox_button = $ModeSelectPanel/ModeContainer/SandboxButton
+@onready var join_button = $MenuContainer/JoinButton
+@onready var ip_input = $MenuContainer/IPInput
 @onready var quit_button = $ModeSelectPanel/ModeContainer/QuitButton
 
 func _ready():
@@ -15,8 +17,8 @@ func _ready():
 	register_button.pressed.connect(_on_register_pressed)
 	mode_select_button.pressed.connect(_on_mode_select_pressed)
 	sandbox_button.pressed.connect(_on_sandbox_pressed)
+	join_button.pressed.connect(_on_join_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
-	# Check if already logged in (e.g., from saved session).
 	if SaveSystem.is_logged_in():
 		_on_login_success()
 
@@ -56,7 +58,38 @@ func _on_mode_select_pressed():
 
 func _on_sandbox_pressed():
 	SaveSystem.current_username = username_input.text.strip_edges()
-	get_tree().change_scene_to_file("res://Core/GameSystems/Multiplayer/sandbox.tscn")
+	var peer = ENetMultiplayerPeer.new()
+	var error = peer.create_server(9877, 32)
+	if error:
+		status_label.text = "Failed to host: " + str(error)
+		return
+	multiplayer.multiplayer_peer = peer
+	var scene_path = "res://Core/GameSystems/Multiplayer/sandbox.tscn"
+	if not ResourceLoader.exists(scene_path):
+		status_label.text = "Error: Scene " + scene_path + " not found!"
+		push_error("Cannot load scene: " + scene_path)
+		return
+	get_tree().change_scene_to_file(scene_path)
+
+func _on_join_pressed():
+	var username = username_input.text.strip_edges()
+	var ip = ip_input.text.strip_edges()
+	if username == "" or ip == "":
+		status_label.text = "Enter username and IP!"
+		return
+	SaveSystem.current_username = username
+	var peer = ENetMultiplayerPeer.new()
+	var error = peer.create_client(ip, 9877)
+	if error:
+		status_label.text = "Failed to join: " + str(error)
+		return
+	multiplayer.multiplayer_peer = peer
+	var scene_path = "res://Core/GameSystems/Multiplayer/sandbox.tscn"
+	if not ResourceLoader.exists(scene_path):
+		status_label.text = "Error: Scene " + scene_path + " not found!"
+		push_error("Cannot load scene: " + scene_path)
+		return
+	get_tree().change_scene_to_file(scene_path)
 
 func _on_quit_pressed():
 	get_tree().quit()
